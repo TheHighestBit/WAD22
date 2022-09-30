@@ -1,0 +1,83 @@
+body{
+    font-family: "Courier New", serif;
+    margin: 0;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background: #aaaaaa;
+    border-radius: 10px;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.navbar li {
+    padding: 10px;
+    margin: 0 20%;
+}
+
+.navbar li:hover{
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar a {
+    font-size: 2rem;
+    text-decoration: none;
+    color: black;
+}
+
+#userIcon {
+    width: 2rem;
+    background: #dadada;
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.addPost{
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2em;
+
+}
+
+.addPost > div {
+    background: #dcdcdc;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2em;
+}
+
+.addPostGrid {
+    padding: 2em;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 2fr;
+}
+
+.addPostGrid textarea {
+    resize: none;
+    height: 5rem;
+}
+
+
+
+#createPostButton{
+    font-family: "Courier New", serif;
+    border: none;
+    background: blue;
+    color: white;
+    padding: 0.5em 1em;
+    text-decoration: none;
+}
