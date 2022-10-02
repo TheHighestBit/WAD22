@@ -46,3 +46,9 @@
 ::placeholder { /*This affects the placeholder text in the input fields*/ 
     opacity: 0.5;
 }
+
+@media (max-width: 600px) { /* For smartphones */
+    .login {
+        width: 70%;
+    }
+}
