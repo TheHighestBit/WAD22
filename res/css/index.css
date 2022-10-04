@@ -1,10 +1,14 @@
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
 }
 
 #header {
+    margin: 8px;
     display: flex;
     padding: 0.5em;
+    background-color: lightgrey;
+    border-radius: 10px;
 }
 
 #header > a {
@@ -12,7 +16,7 @@ body {
 }
 
 #header > a:hover {
-    background-color:rgb(149, 164, 226)
+    background-color:#4646FF;
 }
 
 #header > img {
@@ -32,13 +36,13 @@ body {
 
 #middlecolumn {
     width: 100%;
-    max-width: 600px;
+    max-width: 600pt;
 }
 
 .post {
     padding: 20px;
     margin: 20px;
-    background-color: rgb(235, 239, 255);
+    background-color: lightgrey;
     border-radius: 10px;
 }
 
@@ -53,15 +57,26 @@ body {
     max-width: 40px;
 }
 
-.postheader > .postdate {
+img + span {
     margin-left: auto;
 }
 
-.post > img {
+.postheader ~ img {
     width: 100%;
 }
 
 .likebutton > img {
     width: 100%;
     max-width: 20px;
+}
+
+.likebutton:hover::after {
+    content: "like";
+}
+
+#footer {
+    width: 100%;
+    position: fixed;
+    bottom:0;
+    background-color: lightgrey;
 }

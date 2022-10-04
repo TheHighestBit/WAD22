@@ -10,7 +10,7 @@ body{
     margin: 0;
     padding: 0;
     width: 100%;
-    background: #aaaaaa;
+    background: lightgrey;
     border-radius: 10px;
     justify-content: space-between;
     align-items: center;
@@ -23,7 +23,7 @@ body{
 }
 
 .navbar li:hover{
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: lightgrey;
 }
 
 .navbar a {
@@ -50,7 +50,7 @@ body{
 }
 
 .addPost > div {
-    background: #dcdcdc;
+    background: lightgrey;
     border-radius: 20px;
     display: flex;
     justify-content: center;
@@ -76,7 +76,7 @@ body{
 #createPostButton{
     font-family: "Courier New", serif;
     border: none;
-    background: blue;
+    background: #4646FF;
     color: white;
     padding: 0.5em 1em;
     text-decoration: none;

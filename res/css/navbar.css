@@ -1,0 +1,22 @@
+#header {
+    margin: 8px;
+    display: flex;
+    padding: 0.5em;
+    background-color: lightgrey;
+    border-radius: 10px;
+}
+
+#header > a {
+    padding: 1em;
+}
+
+#header > a:hover {
+    background-color:#4646FF;
+}
+
+#header > img {
+    width: 100%;
+    max-width: 40px;
+    margin-left: auto;
+    object-fit: contain;
+}
