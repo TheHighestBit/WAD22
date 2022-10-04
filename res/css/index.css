@@ -1,0 +1,67 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#header {
+    display: flex;
+    padding: 0.5em;
+}
+
+#header > a {
+    padding: 1em;
+}
+
+#header > a:hover {
+    background-color:rgb(149, 164, 226)
+}
+
+#header > img {
+    width: 100%;
+    max-width: 40px;
+    margin-left: auto;
+    object-fit: contain;
+}
+
+#middle {
+    display: flex;
+}
+
+#leftcolumn, #rightcolumn {
+    flex-grow: 1;
+}
+
+#middlecolumn {
+    width: 100%;
+    max-width: 600px;
+}
+
+.post {
+    padding: 20px;
+    margin: 20px;
+    background-color: rgb(235, 239, 255);
+    border-radius: 10px;
+}
+
+.postheader {
+    display: flex;
+    width: 100%;
+    margin-bottom: 7px;
+}
+
+.postheader > img {
+    width: 100%;
+    max-width: 40px;
+}
+
+.postheader > .postdate {
+    margin-left: auto;
+}
+
+.post > img {
+    width: 100%;
+}
+
+.likebutton > img {
+    width: 100%;
+    max-width: 20px;
+}
