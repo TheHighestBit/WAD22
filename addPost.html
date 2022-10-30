@@ -10,28 +10,21 @@
         <link rel="stylesheet" href="res/css/navbar.css">
     </head>
     <body>
-        <!-- <nav>
-            <ul class="navbar">
-                <li>
-                    <a href="index.html"><strong>Home</strong></a>
-                </li>
-                <li>
-                    <img id="userIcon" src="res/icons/profileUserIcon.svg" alt="image">
-                </li>
-            </ul>
-        </nav> -->
+
         <div id="header">
 			<a href="index.html">home</a>
-			<img src="res/img/profile.jpg">
+			<img src="res/img/profile.jpg" alt="image">
 		</div>
         <div class="addPost">
             <div>
-                <div class="addPostGrid">
+                <form class="addPostGrid">
                     <p>Post body</p>
-                    <textarea placeholder="Enter text..."></textarea>
+                    <label>
+                        <textarea placeholder="Enter text..."></textarea>
+                    </label>
                     <p>Select file</p>
                     <button>Choose file</button>
-                </div>
+                </form>
                 <a href="index.html" id="createPostButton" >Create post</a>
             </div>
         </div>
