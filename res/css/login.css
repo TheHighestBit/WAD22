@@ -22,6 +22,39 @@ body {
     color: rgb(0, 128, 255);
 }
 
+.dropdown {
+    position: relative; /* in order to position dropdown menu directly under the user image */
+    margin-left: auto;
+}
+
+.dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + .25rem);
+    background-color: white;
+    padding: .75rem;
+    border-radius: .25rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+    /* box shadow directly underneath, 2px below the menu itself, 5px size of shadow, black color shadow with 30% opacity*/
+    opacity: 0;
+    pointer-events: none;
+    /* dont show when page loads, cannot be clicked on*/
+}
+
+.dropdown-menu-visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+#user-icon {
+    background: url("/res/img/profile.jpg");
+    background-size: 50px;
+    width: 50px;
+    aspect-ratio: 1;
+    border: 0;
+}
+
 .text-input {
     width: 40%;
     border-radius: 0px;
@@ -50,6 +83,8 @@ body {
 ::placeholder { /*This affects the placeholder text in the input fields*/ 
     opacity: 0.5;
 }
+
+
 
 @media (max-width: 600px) { /* For smartphones */
     .login {
