@@ -2,13 +2,22 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="res/css/index.css">
+		<link rel="stylesheet" href="res/css/navbar.css">
 		<script src="src/js/script.js"></script>
+		<script src="src/js/dropdown.js" defer></script>
 	</head>
 	<body>
 		<div id="header">
 			<a href="index.html">home</a>
 			<a href="addPost.html">add post</a>
-			<img src="res/img/profile.jpg">
+			<div class="dropdown">
+				<button id="user-icon" onclick="toggleMenu()"></button>
+				<div class="dropdown-menu" id="toggle-menu">
+					<p id="name">John Doe</p>
+					<p id="email">john.doe@mail.com</p>
+					<button>logout</button>
+				</div>
+			</div>
 		</div>
 		<div id="middle">
 			<div id="leftcolumn"></div>

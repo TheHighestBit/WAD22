@@ -32,12 +32,6 @@ body{
     color: black;
 }
 
-#userIcon {
-    width: 2rem;
-    background: #dadada;
-    border-radius: 50%;
-    padding: 2px;
-}
 
 .addPost{
     margin-top: 5%;

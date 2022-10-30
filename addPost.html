@@ -8,12 +8,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="res/css/addPost.css">
         <link rel="stylesheet" href="res/css/navbar.css">
+        <script src="src/js/dropdown.js" defer></script>
     </head>
     <body>
 
+
         <div id="header">
 			<a href="index.html">home</a>
-			<img src="res/img/profile.jpg" alt="image">
+            <div class="dropdown">
+                <button id="user-icon" onclick="toggleMenu()"></button>
+                <div class="dropdown-menu" id="toggle-menu">
+                    <p id="name">John Doe</p>
+                    <p id="email">john.doe@mail.com</p>
+                    <button>logout</button>
+                </div>
+            </div>
 		</div>
         <div class="addPost">
             <div>
