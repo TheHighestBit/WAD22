@@ -1,8 +1,7 @@
 <template>
-  <HeaderComponent></HeaderComponent>
-
-  <router-view/>
-  <p>footer</p>
+  <HeaderComponent id="header"></HeaderComponent>
+  <router-view id="body"/>
+  <FooterComponent id="footer"></FooterComponent>
 </template>
 
 <style>
@@ -13,17 +12,29 @@
   text-align: center;
   color: #2c3e50;
 }
-
-nav {
-  padding: 30px;
+body{
+  display: flex;
+  flex-direction: column;
+  margin: 0;
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+
+#header{
+  margin-top: 10px;
+}
+#body {
+  flex-grow: 1;
+}
+#footer {
+  margin-top: auto;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
-}
+
 </style>
+<script>
+import FooterComponent from "@/components/FooterComponent";
+import HeaderComponent from "@/components/HeaderComponent";
+export default {
+  components: {FooterComponent, HeaderComponent}
+}
+</script>
