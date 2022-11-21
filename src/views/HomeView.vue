@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
     <Post v-for="id in ids" :postId="id" :triggerProp="trigger" :key="id"/>
   </div>
   <button @click="resetAll">Reset likes</button>
