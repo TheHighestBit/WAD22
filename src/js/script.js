@@ -1,7 +1,7 @@
 //Fetching JSON from a web endpoint
-//let source = 'https://api.npoint.io/7c7e0a1e60249d73b459';
+let source = 'https://api.npoint.io/7c7e0a1e60249d73b459';
 //Fetching JSON from local storage
-let source = "../res/data.json";
+//let source = "./res/data.json";
 
 window.onload = () => {
     fetch(source)
@@ -24,7 +24,7 @@ window.onload = () => {
             profileImage.src = "res/img/profile.jpg";
 
             let likeImage = document.createElement("img");
-            likeImage.src = "res/img/likebutton.svg";
+            likeImage.src = "res/icons/likebutton.svg";
             
             postHeader.appendChild(profileImage);
 

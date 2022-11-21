@@ -66,6 +66,7 @@
 #user-icon {
     background: url("../img/profile.jpg");
     background-size: 50px;
+    border-radius: 7px;
     width: 50px;
     aspect-ratio: 1;
     border: 0;
