@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Post v-for="id in ids" :postId="id" :triggerProp="trigger" :key="id"/>
+    <Post v-for="id in ids" :postId="id" :key="id" />
   </div>
   <button @click="resetAll">Reset likes</button>
 </template>
@@ -17,13 +17,12 @@ export default {
   },
   data: function() {
     return {
-      trigger: 0,
       ids: store.getters.getPostIDs
     }
   },
   methods: {
     resetAll: function() {
-      this.trigger++;
+      store.commit('resetAllLikes');
     }
   }
 }
