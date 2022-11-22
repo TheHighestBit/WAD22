@@ -1,7 +1,9 @@
 <template>
+
   <HeaderComponent></HeaderComponent>
-  <router-view id="router"/>
+  <router-view/>
   <FooterComponent></FooterComponent>
+
 </template>
 
 <style>
@@ -12,9 +14,12 @@
   text-align: center;
   color: #2c3e50;
 }
+
 body{
   margin: 0;
+  width: 100%;
 }
+
 
 
 
