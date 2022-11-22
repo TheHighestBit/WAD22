@@ -4,9 +4,10 @@
       <label class="login-label">Email</label>
       <input class="text-input" type="email" required v-model="email">
       <label class="login-label">Password </label>
-      <input class="text-input" type="password" required v-model="password">
+      <input class="text-input" type="password" required v-model="password" minlength="8" maxlength="14" pattern="(?=^.*[A-Z].*$)(?=^.*[a-z].*[a-z].*$)(?=^.*\d+.*$)(?=^[A-Z].*$)(?=^.*_.*$).*" oninvalid="this.setCustomValidity('Must have at least 8 chars and less than 15 chars, at least one uppercase character, at least two lowercase alphabet characters, at least one numeric value, start with an uppercase character, include the character _')"
+  oninput="this.setCustomValidity('')">
+      <button id="submit-button">Signup</button>
     </form>
-    <button id="submit-button">Signup</button>
 
   </div>
 </template>
@@ -25,6 +26,10 @@ export default {
 </script>
 
 <style scoped>
+body {
+  height: 100%;
+  position:relative;
+}
 .login {
   display: flex;
   flex-direction: column;
@@ -39,6 +44,8 @@ export default {
   margin-left: auto;
   margin-right: auto;
 }
+
+
 
 .login-label {
 
