@@ -10,8 +10,11 @@ export default {
 
 <style scoped>
   p{
+    position: fixed;
+    bottom: 0;
     margin: 0;
     padding: 10px;
+    width: 100%;
 
     background-color: #333;
     color: #b8b8b8;

@@ -9,5 +9,5 @@ import FooterComponent from "@/components/FooterComponent";
 const app = createApp(App);
 app.use(store).use(router);
 app.component('HeaderComponent', HeaderComponent);
-app.component('FooterComponent', FooterComponent)
+app.component('FooterComponent', FooterComponent);
 app.mount('#app');

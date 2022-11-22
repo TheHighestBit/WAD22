@@ -11,7 +11,7 @@
       {{ content }}
     </p>
     <p>{{ likeCount }} likes</p>
-    <a class="likebutton" @click="likeCount++">
+    <a class="likebutton" @click="addLike">
       <img src="@/assets/likebutton.svg">
     </a> 
   </div>
@@ -23,8 +23,7 @@ import store from '@/store';
 export default {
   name: 'HelloWorld',
   props: {
-    postId: Number,
-    triggerProp: Number
+    postId: Number
   },
   data: function() {
     let postInfo = store.getters.getPostByID(Number(this.postId));
@@ -32,18 +31,17 @@ export default {
       id: postInfo.id,
       content: postInfo.content,
       date: postInfo.date,
-      image: postInfo.image,
-      likeCount: 0
+      image: postInfo.image
+    }
+  },
+  computed: {
+    likeCount() {
+      return store.getters.getPostLikesByID(Number(this.postId));
     }
   },
   methods: {
-    resetLikes: function() {
-      this.likeCount = 0;
-    }
-  },
-  watch: {
-    triggerProp: function() {
-      this.resetLikes();
+    addLike: function() {
+      store.commit('addLike', Number(this.postId));
     }
   }
 }
