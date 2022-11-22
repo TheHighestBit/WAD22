@@ -54,6 +54,7 @@ export default {
     margin: 20px;
     background-color: rgb(248, 248, 248);
     border-radius: 3px;
+    text-align: left;
 }
 
 .postheader {
