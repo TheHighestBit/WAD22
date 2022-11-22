@@ -26,23 +26,21 @@ export default {
 
 <style scoped>
 .login {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-top: 6em;
   background-color: lightgrey;
   border-radius: 8px;
-  width: 35%;
   gap: 0.5em;
   padding: 0.5em;
-  margin-left: auto;
-  margin-right: auto;
+
 }
 
 .login-label {
 
-  width: 100%;
+
   border: none;
   height: 2em;
   margin: 0.3em;
@@ -50,7 +48,7 @@ export default {
 
 .text-input {
   border-radius: 5px;
-  width: 100%;
+
   border: none;
   height: 2em;
   margin: 0.3em;

@@ -28,3 +28,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+ .home {
+   margin: 0 auto; /*aligns posts center*/
+   max-width: 80rem; /*so items wont scale too big with widescreen displays*/
+ }
+</style>

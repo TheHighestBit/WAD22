@@ -1,6 +1,6 @@
 <template>
   <HeaderComponent></HeaderComponent>
-  <router-view id="router"/>
+  <router-view/>
   <FooterComponent></FooterComponent>
 </template>
 
@@ -16,9 +16,6 @@ body{
   margin: 0;
 }
 
-#router {
-
-}
 
 </style>
 
