@@ -66,9 +66,10 @@ export default {
 
 
   #reset-button {
+    margin-top: 50px;
     margin-bottom: 50px; /*not the best solution, but otherwise reset button gets covered by footer*/
   }
-  
+
   .home {
     margin: 0 auto; /*aligns posts center*/
     max-width: 80rem; /*so items wont scale too big with widescreen displays*/
