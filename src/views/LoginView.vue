@@ -16,7 +16,7 @@
 export default {
   name: "LoginView",
   data() {
-    return {
+    return { /*not required yet, for future usage*/
       email: '',
       password: ''
     }
@@ -30,7 +30,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 6em;
+  margin: 6em;
   background-color: lightgrey;
   border-radius: 8px;
   gap: 0.5em;

@@ -14,7 +14,6 @@ export default {
 <style scoped>
   .navbar{
     font-size: 2rem;
-
     width: 100%;
     background: white;
     top: 0;
