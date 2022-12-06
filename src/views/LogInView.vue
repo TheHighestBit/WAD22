@@ -2,11 +2,11 @@
   <div class="login">
     <form>
       <label class="login-label">Email</label>
-      <input class="text-input" type="email" name="email" required v-model="email">
+      <input class="text-input" type="email" required v-model="email">
       <label class="login-label">Password </label>
-      <input class="text-input" type="password" name="password" required v-model="password" minlength="8" maxlength="14" pattern="(?=^.*[A-Z].*$)(?=^.*[a-z].*[a-z].*$)(?=^.*\d+.*$)(?=^[A-Z].*$)(?=^.*_.*$).*" oninvalid="this.setCustomValidity('Must have at least 8 chars and less than 15 chars, at least one uppercase character, at least two lowercase alphabet characters, at least one numeric value, start with an uppercase character, include the character _')"
-  oninput="this.setCustomValidity('')">
-      <button @click="SignUp" id="submit-button">Signup</button>
+      <input class="text-input" type="password" required v-model="password">
+      <button @click="LogIn" id="login-button">Login</button>
+      <button @click="this.$router.push('/signup')" id="signup-button">Signup</button>
     </form>
 
   </div>
@@ -15,7 +15,7 @@
 <script>
 
 export default {
-  name: "SignUpView",
+  name: "LoginView",
   data() {
     return { /*not required yet, for future usage*/
       email: '',
@@ -23,13 +23,13 @@ export default {
     }
   },
   methods: {
-    SignUp() {
+    LogIn() {
       var data = {
         email: this.email,
         password: this.password
       };
       // using Fetch - post method - send an HTTP post request to the specified URI with the defined body
-      fetch("http://localhost:3000/auth/signup", {
+      fetch("http://localhost:3000/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,8 +40,8 @@ export default {
       .then((response) => response.json())
       .then((data) => {
       console.log(data);
-      this.$router.push("/");
-      //location.assign("/");
+      //this.$router.push("/");
+      location.assign("/");
       })
       .catch((e) => {
         console.log(e);
@@ -98,7 +98,7 @@ body {
   text-align: center;
 }
 
-#submit-button {
+#login-button, #signup-button {
   border-radius: 5px;
   background-color: rgba(150, 198, 246, 0.99);
   color: white;
