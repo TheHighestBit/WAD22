@@ -1,0 +1,7 @@
+team number 30, code T
+
+Mihkel Vaino    B56210
+Johan Veenpere  B64640
+Joosep Orasmäe  B90153
+
+https://github.com/fent665/WAD22
