@@ -44,7 +44,7 @@ app.get('/auth/authenticate', async(req, res) => {
                     console.log('token is not verified');
                     res.send({ "authenticated": authenticated }); // authenticated = false
                 } else { // token exists and it is verified 
-                    console.log('author is authinticated');
+                    console.log('author is authenticated');
                     authenticated = true;
                     res.send({ "authenticated": authenticated }); // authenticated = true
                 }
@@ -125,7 +125,7 @@ app.get('/auth/logout', (req, res) => {
     res.status(202).clearCookie('jwt').json({ "Msg": "cookie cleared" }).send
 });
 
-app.get('/posts', async(req, res) => {
+app.get('/posts/get/all', async(req, res) => {
     try {
         console.log("fetching posts");
         const posts = await pool.query(
@@ -136,3 +136,28 @@ app.get('/posts', async(req, res) => {
         console.log(err.message);
     }
 });
+
+app.delete('/posts/delete/all', async(req, res) => {
+    try {
+        console.log("deleting all posts");
+        await pool.query("DELETE FROM posts");
+        res.send("all posts deleted");
+    }  catch (err) {
+        console.log(err.message);
+    }
+});
+
+app.post('/posts/add', async(req, res) => {
+    try {
+        const { content, date } = req.body;
+        console.log(content)
+        console.log(date)
+        const post = await pool.query(
+            "INSERT INTO posts(content, date) values ($1, $2) RETURNING*", [content, date]
+        );
+        res.json(post.rows);
+
+    } catch (err) {
+        console.log(err.message);
+    }
+})
