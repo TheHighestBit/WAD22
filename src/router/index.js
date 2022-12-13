@@ -2,8 +2,9 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import SignUpView from "@/views/SignUpView";
 import LogInView from "@/views/LogInView";
-import PostEditView from "@/views/AddPostView";
 import auth from "../auth";
+import AddPostView from "@/views/AddPostView";
+import EditPostView from "@/views/EditPostView";
 
 const routes = [
   {
@@ -32,7 +33,20 @@ const routes = [
   {
     path: '/post/new',
     name: 'new-post',
-    component: PostEditView,
+    component: AddPostView,
+    beforeEnter: async (to, from, next) => {
+      let authResult = await auth.authenticated();
+      if (!authResult) {
+        next('/login')
+      } else {
+        next();
+      }
+    }
+  },
+  {
+    path: '/post/:id',
+    name: 'edit-post',
+    component: EditPostView,
     beforeEnter: async (to, from, next) => {
       let authResult = await auth.authenticated();
       if (!authResult) {
