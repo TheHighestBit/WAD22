@@ -2,17 +2,17 @@
   <div class="home" id="middle">
     <div id="leftcolumn"></div>
     <div id="middlecolumn">
-      <Post v-for="id in ids" :postId="id" :triggerProp="trigger" :key="id"/>
+      <Post v-for="post in posts"  :post="post" :key="post.id"/>
     </div>
     <div id="rightcolumn"></div>
   </div>
-  <button @click="resetAll" id="reset-button">Reset likes</button>
+  <button @click="addPost" id="reset-button">add post</button>
+  <button @click="deleteAllPosts" id="reset-button">Delete All</button>
 </template>
 
 <script>
 // @ is an alias to /src
-import Post from '@/components/Post.vue'
-import store from '@/store';
+import Post from '@/components/Post.vue';
 
 export default {
   name: 'HomeView',
@@ -21,13 +21,35 @@ export default {
   },
   data: function() {
     return {
-      ids: store.getters.getPostIDs
+      posts:[],
     }
   },
   methods: {
-    resetAll: function() {
-      store.commit('resetAllLikes');
+
+    addPost: function() {
+      this.$router.push("/post/new");
+    },
+    deleteAllPosts: function () {
+      fetch('http://localhost:3000/posts/delete/all', {
+        method: "DELETE",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include'
+      }).then(response => console.log(response))
+          .then(() => this.posts = [])
+          .catch(err => console.log(err));
     }
+  },
+  mounted() {
+    fetch('http://localhost:3000/posts/get/all')
+        .then((response) => response.json())
+        .then(data => this.posts = data)
+        .then((data) => console.log(data))
+        .catch(err => console.log(err.message));
+  },
+  props: {
+    post: Post
   }
 }
 </script>

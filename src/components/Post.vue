@@ -1,48 +1,36 @@
 <template>
   <div class="post">
     <div class="postheader">
-      <img src="@/assets/profile.jpg">
-      <span>
-        {{ date }}
-      </span>
+      {{post.date}}
+
     </div>
-    <img v-if="image != null" :src="require(`@/assets/${image}`)">
-    <p class="posttext" v-if="content != null">
-      {{ content }}
+    <p class="posttext">
+      {{ post.content }}
     </p>
-    <p>{{ likeCount }} likes</p>
-    <a class="likebutton" @click="addLike">
-      <img src="@/assets/likebutton.svg">
-    </a> 
+    <p>Post id: {{ post.id }}</p>
+
   </div>
 </template>
 
 <script>
-import store from '@/store';
 
+let post;
 export default {
   name: 'HelloWorld',
   props: {
-    postId: Number
+    post :post
   },
   data: function() {
-    let postInfo = store.getters.getPostByID(Number(this.postId));
+
     return {
-      id: postInfo.id,
-      content: postInfo.content,
-      date: postInfo.date,
-      image: postInfo.image
+
     }
   },
   computed: {
-    likeCount() {
-      return store.getters.getPostLikesByID(Number(this.postId));
-    }
+
   },
   methods: {
-    addLike: function() {
-      store.commit('addLike', Number(this.postId));
-    }
+
   }
 }
 </script>
