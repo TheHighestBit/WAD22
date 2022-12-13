@@ -58,6 +58,13 @@ export default {
 </script>
 
 <style scoped>
+  button {
+    border: none;
+    background-color: white;
+    font-size: 20px;
+    text-decoration: underline;
+    margin:10px;
+  }
 
   body {
       font-family: Verdana, Geneva, Tahoma, sans-serif;

@@ -46,6 +46,13 @@ export default {
     background: white;
     top: 0;
     margin: 0;
-    padding: 10px 0;
+    padding-top: 50px;
+  }
+
+  button {
+    border: none;
+    background-color: white;
+    font-size: 31px;
+    text-decoration: underline;
   }
 </style>

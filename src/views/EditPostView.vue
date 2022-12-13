@@ -59,5 +59,11 @@ export default {
 </script>
 
 <style scoped>
-
+  button {
+    border: none;
+    background-color: white;
+    font-size: 20px;
+    text-decoration: underline;
+    margin-left: 20px;
+  }
 </style>
