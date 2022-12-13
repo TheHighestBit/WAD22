@@ -1,29 +1,29 @@
 <template>
   <div>
-    <form @submit.prevent="updatePost">
+    <form @submit.prevent="addPost">
       <label>Enter some text:</label>
       <input v-model="text" type="text" />
       <button type="submit">Submit</button>
-      <button @click="deletePost">Delete</button>
     </form>
   </div>
 </template>
 
 <script>
 export default {
-  name: "PostEditView",
+  name: "AddPostView",
   data() {
     return {
       text: ''
     };
   },
   methods: {
-    updatePost: function () {
+
+    async addPost() {
       let data = {
         content: this.text,
         date: new Date()
       }
-      fetch("http://localhost:3000/posts/add", {
+      await fetch("http://localhost:3000/posts/add", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'

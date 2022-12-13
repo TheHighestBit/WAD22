@@ -2,7 +2,7 @@
   <div class="home" id="middle">
     <div id="leftcolumn"></div>
     <div id="middlecolumn">
-      <Post v-for="post in posts"  :post="post" :key="post.id"/>
+      <Post @click="redirectToPost(post.id)" v-for="post in posts"  :post="post" :key="post.id"/>
     </div>
     <div id="rightcolumn"></div>
   </div>
@@ -29,8 +29,8 @@ export default {
     addPost: function() {
       this.$router.push("/post/new");
     },
-    deleteAllPosts: function () {
-      fetch('http://localhost:3000/posts/delete/all', {
+    async deleteAllPosts () {
+      await fetch('http://localhost:3000/posts/delete/all', {
         method: "DELETE",
         headers: {
           'Content-Type': 'application/json'
@@ -39,6 +39,9 @@ export default {
       }).then(response => console.log(response))
           .then(() => this.posts = [])
           .catch(err => console.log(err));
+    },
+    redirectToPost(postId){
+      this.$router.push("/post/" + postId);
     }
   },
   mounted() {

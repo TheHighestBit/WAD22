@@ -72,14 +72,14 @@ app.post('/auth/signup', async(req, res) => {
             "INSERT INTO users(email, password) values ($1, $2) RETURNING*", [email, bcryptPassword]
         );
         console.log(authUser.rows[0].id);
-        const token = await generateJWT(authUser.rows[0].id); // generates a JWT by taking the user id as an input (payload)
+        //const token = await generateJWT(authUser.rows[0].id); // generates a JWT by taking the user id as an input (payload)
         //console.log(token);
         //res.cookie("isAuthorized", true, { maxAge: 1000 * 60, httpOnly: true });
         //res.cookie('jwt', token, { maxAge: 6000000, httpOnly: true });
         res
             .status(201)
-            .cookie('jwt', token, { maxAge: 6000000, httpOnly: true })
-            .json({ user_id: authUser.rows[0].id })
+            //.cookie('jwt', token, { maxAge: 6000000, httpOnly: true })
+            //.json({ user_id: authUser.rows[0].id })
             .send;
     } catch (err) {
         console.error(err.message);
@@ -137,6 +137,19 @@ app.get('/posts/get/all', async(req, res) => {
     }
 });
 
+app.get('/posts/get/:id', async(req, res) => {
+    try {
+        console.log("fetching posts");
+        const postId = req.params.id;
+        const posts = await pool.query(
+            "SELECT * FROM posts WHERE id = $1", postId
+        );
+        res.json(posts.rows);
+    } catch (err) {
+        console.log(err.message);
+    }
+});
+
 app.delete('/posts/delete/all', async(req, res) => {
     try {
         console.log("deleting all posts");
@@ -165,7 +178,7 @@ app.post('/posts/add', async(req, res) => {
 app.put('/posts/edit/:id', async(req, res) => {
     try {
         const id = req.params.id;
-        const content  = req.body;
+        const content  = req.body.content;
         const post = await pool.query("UPDATE posts set content = $2 where id = $1 RETURNING*", [id, content]);
         res.json(post.rows);
     } catch (err) {
@@ -176,7 +189,7 @@ app.put('/posts/edit/:id', async(req, res) => {
 app.delete('/posts/delete/:id', async(req, res) => {
     try {
         const id = req.params.id;
-        await pool.query("DELETE FROM posts WHERE id = $1", id);
+        await pool.query("DELETE FROM posts WHERE id = $1", [id]);
         res.send("deleted post with id: " + id);
     } catch (err) {
         console.log(err.message);
