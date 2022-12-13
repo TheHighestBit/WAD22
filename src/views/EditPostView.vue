@@ -19,12 +19,12 @@ export default {
   },
   methods: {
 
-    updatePost: function () {
+    async updatePost() {
       let data = {
         content: this.text
       }
       console.log(this.postId)
-      fetch("http://localhost:3000/posts/edit/" + this.postId, {
+      await fetch("http://localhost:3000/posts/edit/" + this.postId, {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
@@ -35,8 +35,8 @@ export default {
           .then(this.$router.push("/"))
           .catch(err => console.log(err.message))
     },
-    deletePost: function (){
-      fetch('http://localhost:3000/posts/delete/' + this.postId, {
+    async deletePost (){
+      await fetch('http://localhost:3000/posts/delete/' + this.postId, {
         method: "DELETE",
         headers: {
           'Content-Type': 'application/json'

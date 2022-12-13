@@ -18,12 +18,12 @@ export default {
   },
   methods: {
 
-    addPost: function () {
+    async addPost() {
       let data = {
         content: this.text,
         date: new Date()
       }
-      fetch("http://localhost:3000/posts/add", {
+      await fetch("http://localhost:3000/posts/add", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'

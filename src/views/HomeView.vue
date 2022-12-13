@@ -29,8 +29,8 @@ export default {
     addPost: function() {
       this.$router.push("/post/new");
     },
-    deleteAllPosts: function () {
-      fetch('http://localhost:3000/posts/delete/all', {
+    async deleteAllPosts () {
+      await fetch('http://localhost:3000/posts/delete/all', {
         method: "DELETE",
         headers: {
           'Content-Type': 'application/json'
