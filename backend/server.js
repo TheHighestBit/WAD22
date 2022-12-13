@@ -21,7 +21,7 @@ const maxAge = 60 * 60; //unlike cookies, the expiresIn in jwt token is calculat
 
 const generateJWT = (id) => {
     return jwt.sign({ id }, secret, { expiresIn: maxAge })
-        //jwt.sign(payload, secret, [options, callback]), and it returns the JWT as string
+    //jwt.sign(payload, secret, [options, callback]), and it returns the JWT as string
 }
 
 app.listen(port, () => {
@@ -29,7 +29,7 @@ app.listen(port, () => {
 });
 
 
-// is used to check whether a user is authinticated
+// is used to check whether a user is authenticated
 app.get('/auth/authenticate', async(req, res) => {
     console.log('authentication request has been arrived');
     const token = req.cookies.jwt; // assign the token named jwt to the token const
@@ -43,14 +43,14 @@ app.get('/auth/authenticate', async(req, res) => {
                     console.log(err.message);
                     console.log('token is not verified');
                     res.send({ "authenticated": authenticated }); // authenticated = false
-                } else { // token exists and it is verified 
+                } else { // token exists and it is verified
                     console.log('author is authenticated');
                     authenticated = true;
                     res.send({ "authenticated": authenticated }); // authenticated = true
                 }
             })
         } else { //applies when the token does not exist
-            console.log('author is not authinticated');
+            console.log('author is not authenticated');
             res.send({ "authenticated": authenticated }); // authenticated = false
         }
     } catch (err) {
@@ -67,7 +67,7 @@ app.post('/auth/signup', async(req, res) => {
         const { email, password } = req.body;
 
         const salt = await bcrypt.genSalt(); //  generates the salt, i.e., a random string
-        const bcryptPassword = await bcrypt.hash(password, salt) // hash the password and the salt 
+        const bcryptPassword = await bcrypt.hash(password, salt) // hash the password and the salt
         const authUser = await pool.query( // insert the user and the hashed password into the database
             "INSERT INTO users(email, password) values ($1, $2) RETURNING*", [email, bcryptPassword]
         );
@@ -94,12 +94,12 @@ app.post('/auth/login', async(req, res) => {
         const user = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
         if (user.rows.length === 0) return res.status(401).json({ error: "User is not registered" });
 
-        /* 
-        To authenticate users, you will need to compare the password they provide with the one in the database. 
-        bcrypt.compare() accepts the plain text password and the hash that you stored, along with a callback function. 
-        That callback supplies an object containing any errors that occurred, and the overall result from the comparison. 
+        /*
+        To authenticate users, you will need to compare the password they provide with the one in the database.
+        bcrypt.compare() accepts the plain text password and the hash that you stored, along with a callback function.
+        That callback supplies an object containing any errors that occurred, and the overall result from the comparison.
         If the password matches the hash, the result is true.
-        bcrypt.compare method takes the first argument as a plain text and the second argument as a hash password. 
+        bcrypt.compare method takes the first argument as a plain text and the second argument as a hash password.
         If both are equal then it returns true else returns false.
         */
 
@@ -157,6 +157,27 @@ app.post('/posts/add', async(req, res) => {
         );
         res.json(post.rows);
 
+    } catch (err) {
+        console.log(err.message);
+    }
+})
+
+app.put('/posts/edit/:id', async(req, res) => {
+    try {
+        const id = req.params.id;
+        const content  = req.body;
+        const post = await pool.query("UPDATE posts set content = $2 where id = $1 RETURNING*", [id, content]);
+        res.json(post.rows);
+    } catch (err) {
+        console.log(err.message);
+    }
+});
+
+app.delete('/posts/delete/:id', async(req, res) => {
+    try {
+        const id = req.params.id;
+        await pool.query("DELETE FROM posts WHERE id = $1", id);
+        res.send("deleted post with id: " + id);
     } catch (err) {
         console.log(err.message);
     }
