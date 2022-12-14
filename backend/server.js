@@ -71,16 +71,16 @@ app.post('/auth/signup', async(req, res) => {
         const authUser = await pool.query( // insert the user and the hashed password into the database
             "INSERT INTO users(email, password) values ($1, $2) RETURNING*", [email, bcryptPassword]
         );
-        console.log(authUser.rows[0].id);
+        console.log(authUser.rows[0].email);
         //const token = await generateJWT(authUser.rows[0].id); // generates a JWT by taking the user id as an input (payload)
         //console.log(token);
         //res.cookie("isAuthorized", true, { maxAge: 1000 * 60, httpOnly: true });
         //res.cookie('jwt', token, { maxAge: 6000000, httpOnly: true });
         await res
-            .status(201)
+            .status(201).json("signup successful").send;
             //.cookie('jwt', token, { maxAge: 6000000, httpOnly: true })
             //.json({ user_id: authUser.rows[0].id })
-            .send;
+
     } catch (err) {
         console.error(err.message);
         res.status(400).send(err.message);
@@ -91,6 +91,12 @@ app.post('/auth/login', async(req, res) => {
     try {
         console.log("a login request has arrived");
         const { email, password } = req.body;
+
+        if (email.length < 3) {
+            console.log("empty body")
+            res.status(418).json({error: "empty body"})
+            return
+        }
         const user = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
         if (user.rows.length === 0) return res.status(401).json({ error: "User is not registered" });
         console.log(email);
@@ -103,7 +109,7 @@ app.post('/auth/login', async(req, res) => {
         bcrypt.compare method takes the first argument as a plain text and the second argument as a hash password.
         If both are equal then it returns true else returns false.
         */
-        console.log(user.rows[0].password);
+ //       console.log(user.rows[0].password);
         //Checking if the password is correct
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
         //console.log("validPassword:" + validPassword);
@@ -130,7 +136,7 @@ app.get('/posts/get/all', async(req, res) => {
     try {
         console.log("fetching posts");
         const posts = await pool.query(
-            "SELECT * FROM posts"
+            "SELECT * FROM posts ORDER BY id"
         );
         await res.json(posts.rows);
     } catch (err) {
@@ -143,7 +149,7 @@ app.get('/posts/get/:id', async(req, res) => {
         console.log("fetching posts");
         const postId = req.params.id;
         const posts = await pool.query(
-            "SELECT * FROM posts WHERE id = $1", postId
+            "SELECT * FROM posts WHERE id = $1", [postId]
         );
         await res.json(posts.rows);
     } catch (err) {

@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="login" onsubmit="return false">
     <form>
       <label class="login-label">Email</label>
       <input class="text-input" type="email" name="email" required v-model="email">
@@ -37,9 +37,8 @@ export default {
           credentials: 'include', //  Don't forget to specify this if you need cookies
           body: JSON.stringify(data),
       })
-      .then((response) => response.json())
-      .then((data) => {
-      console.log(data);
+      .then(() => {
+        console.log("asd");
       this.$router.push("/login");
       //location.assign("/");
       })
