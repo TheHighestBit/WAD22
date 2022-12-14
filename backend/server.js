@@ -31,7 +31,7 @@ app.listen(port, () => {
 
 // is used to check whether a user is authenticated
 app.get('/auth/authenticate', async(req, res) => {
-    console.log('authentication request has been arrived');
+    console.log('authentication request has arrived');
     const token = req.cookies.jwt; // assign the token named jwt to the token const
     //console.log("token " + token);
     let authenticated = false; // a user is not authenticated until proven the opposite
@@ -82,6 +82,7 @@ app.post('/auth/signup', async(req, res) => {
             //.json({ user_id: authUser.rows[0].id })
             .send;
     } catch (err) {
+        console.log("signup failed")
         console.error(err.message);
         res.status(400).send(err.message);
     }

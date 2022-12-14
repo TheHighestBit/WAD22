@@ -40,8 +40,9 @@ export default {
       .then((response) => response.json())
       .then((data) => {
       console.log(data);
-      //this.$router.push("/");
-      location.assign("/");
+      this.$router.push("/");
+      //location.assign("/");
+      console.log("successful login");
       })
       .catch((e) => {
         console.log(e);
