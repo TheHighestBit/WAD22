@@ -39,8 +39,8 @@ export default {
       })
       .then(() => {
         console.log("asd");
-      this.$router.push("/login");
-      //location.assign("/");
+        //this.$router.push("/login");
+        location.assign("/");
       })
       .catch((e) => {
         console.log(e);
