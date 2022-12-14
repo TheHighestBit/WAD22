@@ -3,7 +3,7 @@
     <Post v-if="posts" :post="posts" :key="posts.id"/>
   </div>
   <form @submit.prevent="">
-    <label>Enter some text:</label>
+    <label>Edit the post: </label>
     <textarea rows="15" cols="50" v-model="text" type="text" ></textarea>
     <button @click="updatePost">Submit</button>
     <button @click="deletePost"> Delete</button>
