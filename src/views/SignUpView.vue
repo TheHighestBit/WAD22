@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <form onsubmit="return false">
+    <form onsubmit="return false"> 
       <label class="login-label">Email</label>
       <input class="text-input" type="email" name="email" required v-model="email">
       <label class="login-label">Password </label>

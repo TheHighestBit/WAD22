@@ -1,8 +1,8 @@
 <template>
   <div>
     <form @submit.prevent="addPost">
-      <label>Enter some text:</label>
-      <input v-model="text" type="text" />
+      <label style="margin-right: 2em;">Post content: </label>
+      <textarea rows="15" cols="50" v-model="text" type="text" ></textarea>
       <button type="submit">Submit</button>
     </form>
   </div>
@@ -46,6 +46,17 @@ export default {
     font-size: 20px;
     text-decoration: underline;
     margin-left: 20px;
+  }
+
+  textarea {
+    margin-top: 3em;
+    resize: none;
+  }
+
+  form {
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
   }
 </style>
 

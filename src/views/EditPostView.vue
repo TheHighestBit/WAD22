@@ -4,7 +4,7 @@
   </div>
   <form @submit.prevent="">
     <label>Enter some text:</label>
-    <input v-model="text" type="text" />
+    <textarea rows="15" cols="50" v-model="text" type="text" ></textarea>
     <button @click="updatePost">Submit</button>
     <button @click="deletePost"> Delete</button>
   </form>
@@ -60,7 +60,10 @@ export default {
    created: async function() {
      await fetch('http://localhost:3000/posts/get/'+ this.postId)
          .then((response) => response.json())
-         .then(data => this.posts = data[0])
+         .then(data => {
+          this.posts = data[0]; 
+          this.text = data[0].content;
+         })
          .catch(err => console.log(err.message));
    }
 
@@ -74,5 +77,11 @@ export default {
     font-size: 20px;
     text-decoration: underline;
     margin-left: 20px;
+  }
+
+  form {
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
   }
 </style>

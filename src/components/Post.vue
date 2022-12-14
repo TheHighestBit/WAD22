@@ -1,7 +1,7 @@
 <template>
   <div class="post">
     <div class="postheader">
-      {{post.date}}
+      {{ formatDate }}
 
     </div>
     <p class="posttext">
@@ -27,7 +27,9 @@ export default {
     }
   },
   computed: {
-
+    formatDate() {
+      return this.post.date.split('T')[0];
+    }
   },
   methods: {
 
