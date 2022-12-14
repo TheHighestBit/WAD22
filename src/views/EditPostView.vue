@@ -1,4 +1,7 @@
 <template>
+  <div >
+    <Post v-if="posts" :post="posts" :key="posts.id"/>
+  </div>
   <form @submit.prevent="">
     <label>Enter some text:</label>
     <input v-model="text" type="text" />
@@ -8,16 +11,22 @@
 </template>
 
 <script>
+import Post from "@/components/Post";
+
 export default {
+  components: {
+    Post
+  },
   name: "EditPostView",
   data(){
     return {
       postId: this.$route.params.id,
       text: '',
-      post: ''
+      posts: null
     }
   },
   methods: {
+
 
     async updatePost() {
       let data = {
@@ -48,13 +57,13 @@ export default {
 
     }
   },
-  mounted() {
-    fetch('http://localhost:3000/posts/get/'+ this.postId)
-        .then((response) => response.json())
-        .then(data => this.post = data)
-        .then((data) => console.log(data))
-        .catch(err => console.log(err.message));
-  },
+   created: async function() {
+     await fetch('http://localhost:3000/posts/get/'+ this.postId)
+         .then((response) => response.json())
+         .then(data => this.posts = data[0])
+         .catch(err => console.log(err.message));
+   }
+
 }
 </script>
 

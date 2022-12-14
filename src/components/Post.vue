@@ -18,7 +18,7 @@ let post;
 export default {
   name: 'HelloWorld',
   props: {
-    post :post
+    post : post
   },
   data: function() {
 
