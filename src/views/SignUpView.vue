@@ -39,7 +39,7 @@ export default {
       })
       .then(() => {
         console.log("asd");
-      this.$router.push("/login");
+      this.$router.push("/");
       //location.assign("/");
       })
       .catch((e) => {

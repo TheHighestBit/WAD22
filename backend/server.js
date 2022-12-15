@@ -72,14 +72,13 @@ app.post('/auth/signup', async(req, res) => {
             "INSERT INTO users(email, password) values ($1, $2) RETURNING*", [email, bcryptPassword]
         );
         console.log(authUser.rows[0].email);
-        //const token = await generateJWT(authUser.rows[0].id); // generates a JWT by taking the user id as an input (payload)
-        //console.log(token);
-        //res.cookie("isAuthorized", true, { maxAge: 1000 * 60, httpOnly: true });
-        //res.cookie('jwt', token, { maxAge: 6000000, httpOnly: true });
-        await res
-            .status(201).json("signup successful").send;
-            //.cookie('jwt', token, { maxAge: 6000000, httpOnly: true })
-            //.json({ user_id: authUser.rows[0].id })
+        const token = generateJWT(authUser.rows[0].id); // generates a JWT by taking the user id as an input (payload)
+
+        res
+            .status(201)
+            .cookie('jwt', token, { maxAge: 6000000, httpOnly: true })
+            .json({ user_id: authUser.rows[0].id })
+            .send
 
     } catch (err) {
         console.error(err.message);
