@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <form @submit.prevent="addPost">
+  <div class="limiter">
+    <form @submit.prevent="addPost" class="post">
       <label style="margin-right: 2em;">Post content: </label>
       <textarea rows="15" cols="50" v-model="text" type="text" ></textarea>
       <button type="submit">Submit</button>
@@ -40,13 +40,11 @@ export default {
 </script>
 
 <style scoped>
-  button {
-    border: none;
-    background-color: white;
-    font-size: 20px;
-    text-decoration: underline;
-    margin-left: 20px;
-  }
+button {
+  font-size: 20px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
 
   textarea {
     margin-top: 3em;
@@ -58,5 +56,26 @@ export default {
     align-items: center; 
     justify-content: center;
   }
+
+  .limiter {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+
+  .post {
+    margin-top: 10px;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgb(196, 196, 196);;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 40vw;
+    gap: 5px;
+  }
+  
+
 </style>
 

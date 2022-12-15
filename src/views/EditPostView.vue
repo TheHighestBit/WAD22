@@ -1,21 +1,28 @@
 <template>
-  <div >
+<!--  <div >
     <Post v-if="posts" :post="posts" :key="posts.id"/>
+  </div>-->
+
+  <div class="limiter">
+    <form @submit.prevent="" class="post">
+      <label>Edit the post: </label>
+      <textarea rows="15" cols="50" v-model="text" type="text" ></textarea>
+      <div class="buttons">
+
+        <button @click="deletePost" class="delete-button"> Delete</button>
+        <button @click="updatePost" class="submit-button">Submit</button>
+      </div>
+    </form>
+
   </div>
-  <form @submit.prevent="">
-    <label>Edit the post: </label>
-    <textarea rows="15" cols="50" v-model="text" type="text" ></textarea>
-    <button @click="updatePost">Submit</button>
-    <button @click="deletePost"> Delete</button>
-  </form>
 </template>
 
 <script>
-import Post from "@/components/Post";
+//import Post from "@/components/Post";
 
 export default {
   components: {
-    Post
+    //Post
   },
   name: "EditPostView",
   data(){
@@ -72,16 +79,51 @@ export default {
 
 <style scoped>
   button {
-    border: none;
-    background-color: white;
     font-size: 20px;
-    text-decoration: underline;
-    margin-left: 20px;
+    border: 1px solid gray;
+    border-radius: 5px;
   }
 
   form {
     display: flex; 
     align-items: center; 
     justify-content: center;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  .limiter {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+
+  .post {
+    margin-top: 10px;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgb(196, 196, 196);;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 40vw;
+    gap: 5px;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .submit-button {
+    background: rgba(24,173,53,0.2);
+  }
+
+  .delete-button {
+    background: rgba(179,70,67,0.2);
   }
 </style>

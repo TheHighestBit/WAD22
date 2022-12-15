@@ -5,6 +5,7 @@ import LogInView from "@/views/LogInView";
 import auth from "../auth";
 import AddPostView from "@/views/AddPostView";
 import EditPostView from "@/views/EditPostView";
+import AboutView from "@/views/AboutView";
 
 const routes = [
   {
@@ -55,6 +56,11 @@ const routes = [
         next();
       }
     }
+  },
+  {
+    path: '/about',
+    name: 'about-page',
+    component: AboutView
   }
 ]
 
